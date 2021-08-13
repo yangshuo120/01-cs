@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        name: '安安',
+        age: 12,
+        hh: {
+          name: '威威',
+        },
+      }
+      // 浅拷贝
+      function cloneObj(obj) {
+        let newobj = {}
+        for (let k in obj) {
+          newobj[k] = obj[k]
+        }
+      }
+      // 深拷贝
+      function clone(obj) {
+        let newObj = {}
+        for (let k in obj) {
+          newObj[k] = typeof obj[k] === 'object' ? colneObj(obj[k]) : obj[k]
+        }
+        return newObj
+      }
+    </script>
+  </body>
+</html>

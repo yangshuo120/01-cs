@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Super(name) {
+        this.name = name
+      }
+      Super.prototype.say = function () {
+        console.log('hello', this.name)
+      }
+      function Sub(name, age) {
+        // 借用构造函数继承->继承属性
+        Super.call(this, name)
+        this.age = age
+      }
+        // 原型链继承->组合继承->寄生式组合继承
+      Sub.prototype = Object.create(Super.prototype)
+      Sub.prototype.construcotr = Sub
+      Sub.prototype.sleep = function () {
+        console.log('sleep')
+      }
+      let s = new Sub()
+      console.log(s)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let $ = {
+        ajax(option) {
+          let type = option.type || 'get'
+          let data = option.data
+          let url = option.url
+          if (typeof data === 'object') {
+            let arr = []
+            for (let k in data) {
+              arr.push(`${k}=${data[k]}`)
+            }
+            data = arr.join('&')
+          }
+          let xhr = new XMLHttpRequest()
+          if (type === 'get') {
+            xhr.open('get', url + '?' + data)
+            data = null
+          }
+          if (type === 'post') {
+            xhr.open('post', url)
+            xhr.setRequestHeader(
+              'content-type',
+              'application/x-www-form-urlencoded'
+            )
+          }
+          xhr.send(data)
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              success(JSON.parse(xhr.responseText))
+            } else {
+              error(JSON.parse(xhr.responseText))
+            }
+          }
+        },
+      }
+    </script>
+  </body>
+</html>

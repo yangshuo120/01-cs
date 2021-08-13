@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var arr = [1, 2, 3, 3, 2, 1]
+      // // 1. es6的set去重
+      // var arr1 = [...new Set(arr)]
+      // console.log(arr1)
+      // 2. 遍历配合includes/indexof
+      function Fn(arr) {
+        var arr2 = []
+        arr.forEach((item) => {
+          if (arr2.indexOf(item) === -1) {
+            arr2.push(item)
+          }
+        })
+        return arr2
+      }
+
+      // let arr3 = []
+      // arr.forEach((item) => {
+      //   if (!arr3.includes(item)) {
+      //     arr3.push(item)
+      //   }
+      // })
+      // console.log(arr2, arr3)
+      // 排序后判断相连两个是否相等
+
+      // function Foo(arr) {
+      //   let arr4 = []
+      //   arr.sort()
+      //   arr.forEach((item) => {
+      //     if (item !== arr4[arr4.length - 1]) {
+      //       console.log(arr4.length)
+      //       arr4.push(item)
+      //     }
+      //   })
+      //   return arr4
+      // }
+      // console.log(arr4)
+      // 双重for循环
+      // let arr5 = []
+      // // 遍历数组
+      function Fooo(arr) {
+        for (let index = 0; index < arr.length; index++) {
+          for (let j = index + 1; j < arr.length; j++) {
+            if (arr[index] === arr[j]) {
+              arr.splice(j, 1)
+              j--
+            }
+          }
+        }
+        return arr
+      }
+      console.log(Fooo([1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1]))
+
+      //
+      function Fo(arr) {
+        var newArr = []
+        for (var i = 0; i < arr.length; i++) {
+          for (var j = i + 1; j < arr.length; j++)
+            if (arr[i] === arr[j]) j = ++i
+          newArr.push(arr[i])
+        }
+        return newArr
+      }
+      console.log(Fo([1, 2, 3, 3, 2, 1]))
+
+      var arr = [1, 2, 3, 3, 2, 1]
+
+      function unique5(array) {
+        var r = []
+        for (var i = 0, l = array.length; i < l; i++) {
+          for (var j = i + 1; j < l; j++) if (array[i] === array[j]) j = ++i
+          r.push(array[i])
+        }
+        return r
+      }
+      console.log(unique5(arr))
+    </script>
+  </body>
+</html>
